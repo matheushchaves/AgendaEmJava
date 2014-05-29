@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 import br.unipe.cc.agenda.fachada.AgendaFachada;
+import br.unipe.cc.agenda.gui.funcoes.G;
 import br.unipe.cc.agenda.modelo.Contato;
 
 public class JanelaContatoRemover extends JanelaContato implements
@@ -17,33 +18,30 @@ public class JanelaContatoRemover extends JanelaContato implements
 		preparaBotoes();
 		preparaJanela("Agenda Eletronica - Remover");
 	}
-	
-
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == campoNome) {
-			botaoConfirmar.grabFocus();
+		boolean fecharJanela = e.getSource().equals(botaoRetornar); 
+		if (e.getSource().equals(campoTelefone))
+			validarTelefone();
+		if (e.getSource().equals(botaoConfirmar)) {
+			if (fecharJanela=agenda.removerContato(new Contato("", campoTelefone.getText()))) {
+				G.msgInfo("Contato Removido!!!", "Informação");
+			} else
+				G.msgInfo("Contato não Encontrado!!!", "Informação");
 		}
-		if (e.getSource() == botaoConfirmar) {
-			if (agenda.removerContato(new Contato(campoNome.getText(),""))){
-				JOptionPane.showMessageDialog(null, "Contato Removido!", "Informação", JOptionPane.INFORMATION_MESSAGE);
-				janelaContato.dispose();
-			}
-			else
-				JOptionPane.showMessageDialog(null, "Contato não encontrado!", "Informação", JOptionPane.INFORMATION_MESSAGE);
-		}
-		if (e.getSource() == botaoRetornar)
+		if (fecharJanela)
 			janelaContato.dispose();
 
 	}
+
 	@Override
 	public boolean validarTelefone() {
 		boolean retorno = super.validarTelefone();
 		if (retorno)
-		    botaoConfirmar.grabFocus();
+			botaoConfirmar.grabFocus();
 		return retorno;
-		
+
 	}
 
 }

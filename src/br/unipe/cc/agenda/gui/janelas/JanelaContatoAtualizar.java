@@ -21,7 +21,7 @@ public class JanelaContatoAtualizar extends JanelaContato {
 		super.actionPerformed(e);
 		boolean fecharJanela = false;
 		if (e.getSource().equals(botaoConfirmar)) {
-			fecharJanela = validarNome() & validarTelefone() & agenda.atualizarContato(new Contato(campoNome.getText(), campoTelefone.getText()));
+			fecharJanela =  validarTelefone() && super.validarNome()  && agenda.atualizarContato(new Contato(campoNome.getText(), campoTelefone.getText()));
 			if (fecharJanela)
 				G.msgInfo("Contato Atualizado Com Sucesso.", "Informação");
 		}

@@ -7,10 +7,8 @@ import br.unipe.cc.agenda.negocio.UsaAgenda;
 
 public class AgendaFachada {
 	private UsaAgenda agenda;
-	private static final int CAPACIDADE = 100;
-	
 	public AgendaFachada() {
-		this.agenda = new UsaAgenda(new RepositorioAgendaArray(CAPACIDADE));
+		this.agenda = new UsaAgenda(new RepositorioAgendaArray(0));
 	}
 
 	public boolean cadastrarContato(Contato c) {
@@ -28,7 +26,7 @@ public class AgendaFachada {
 	}
 
 	public boolean removerContato(Contato c) {
-		return agenda.apagar(c);
+		return agenda.removerContato(c);
 	}
 	
 	public boolean atualizarContato(Contato c) {

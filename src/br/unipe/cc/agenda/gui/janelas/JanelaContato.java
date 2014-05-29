@@ -77,7 +77,6 @@ public class JanelaContato implements ActionListener {
 		campoNome.setColumns(35);
 		campoNome.setToolTipText("Informe nome do contato.");
 
-		painelTelefone.setLayout(new FlowLayout(FlowLayout.LEFT));
 		painelNome.add(textoNome);
 		painelNome.add(campoNome);
 		janelaContato.add(painelNome);
@@ -91,6 +90,7 @@ public class JanelaContato implements ActionListener {
 	 */
 
 	void preparaTelefone() {
+		painelTelefone.setLayout(new FlowLayout(FlowLayout.LEFT));
 		textoTelefone.setText("Telefone:");
 		try {
 			mascaraDeTelefone = new MaskFormatter("####-####");

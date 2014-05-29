@@ -26,12 +26,11 @@ public class RepositorioAgendaArray implements IRepositorioAgenda {
 	}
 
 	@Override
-	public boolean remover(String nome) {
-		Contato buscaContato = procurarNome(nome);
+	public boolean remover(String telefone) {
+		Contato buscaContato = procurarTelefone(telefone);
 		int i = buscaContato!=null ? this.getPosicao(buscaContato.getTelefone()) : 0 ;
-
 		// se a posiçao não for o tamanho de contatos
-		boolean remover = i != this.qtdcontatos && i != 0  ; 
+		boolean remover = i != this.qtdcontatos  ; 
 		if (remover) {
 			this.qtdcontatos = this.qtdcontatos - 1; // diminue o tamanho
 			this.contatos[i] = this.contatos[this.qtdcontatos];
@@ -55,7 +54,7 @@ public class RepositorioAgendaArray implements IRepositorioAgenda {
 	}
 
 	@Override
-	public boolean existe(String telefone) {
+	public boolean existeTelefone(String telefone) {
 		int i = this.getPosicao(telefone);
 		return (i != this.qtdcontatos);
 	}
@@ -130,10 +129,6 @@ public class RepositorioAgendaArray implements IRepositorioAgenda {
 		return encontrados2;
 	}
 
-	@Override
-	public Contato[] listar() {
-		return contatos; 
-	}
 
 	@Override
 	public void ordenar() {
@@ -148,5 +143,12 @@ public class RepositorioAgendaArray implements IRepositorioAgenda {
 			}
 		}
 	}
+
+	@Override
+	public Contato[] paraArray() {
+		return contatos;
+	}
+
+
 
 }

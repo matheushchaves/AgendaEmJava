@@ -1,6 +1,5 @@
 package br.unipe.cc.agenda.negocio;
 
-
 import br.unipe.cc.agenda.dados.IRepositorioAgenda;
 import br.unipe.cc.agenda.modelo.Contato;
 
@@ -12,8 +11,7 @@ public class UsaAgenda {
 	}
 
 	public boolean cadastrar(Contato c) {
-		// Aplicaçao da Regra de Negocio 
-		if (!agenda.existe(c.getTelefone())) {
+		if (!agenda.existeTelefone(c.getTelefone())) {
 			agenda.inserir(c);
 			return true;
 		} else {
@@ -28,23 +26,26 @@ public class UsaAgenda {
 	public Contato procurarTelefone(Contato c) {
 		return agenda.procurarTelefone(c.getTelefone());
 	}
+
 	public Contato procurarNome(Contato c) {
 		return agenda.procurarNome(c.getNome());
 	}
+
 	public Contato[] procurarPorParteNome(Contato c) {
 		return agenda.procurarPorParteDoNome(c.getNome());
 	}
 
-	public boolean apagar(Contato c) {
-		return agenda.remover(c.getNome());
+	public boolean removerContato(Contato c) {
+		return agenda.remover(c.getTelefone());
 
 	}
-    public void ordenarContatos(){
-    	agenda.ordenar();
-    }
+
+	public void ordenarContatos() {
+		agenda.ordenar();
+	}
+
 	public Contato[] listarContatos() {
-		return agenda.listar();
+		return agenda.paraArray();
 	}
-
 
 }
