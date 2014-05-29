@@ -1,4 +1,4 @@
-package br.unipe.cc.agenda.gui.janelas;
+package br.unipe.cc.agenda.gui.janelas.contato;
 
 import java.awt.event.ActionEvent;
 

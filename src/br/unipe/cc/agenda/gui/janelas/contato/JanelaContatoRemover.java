@@ -1,9 +1,9 @@
-package br.unipe.cc.agenda.gui.janelas;
+package br.unipe.cc.agenda.gui.janelas.contato;
 
 import java.awt.event.ActionEvent;
+
 import java.awt.event.ActionListener;
 
-import javax.swing.JOptionPane;
 
 import br.unipe.cc.agenda.fachada.AgendaFachada;
 import br.unipe.cc.agenda.gui.funcoes.G;

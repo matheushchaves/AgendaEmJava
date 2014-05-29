@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 
 import br.unipe.cc.agenda.fachada.AgendaFachada;
 import br.unipe.cc.agenda.gui.funcoes.G;
+import br.unipe.cc.agenda.gui.janelas.contato.*;
 
 public class JanelaPrincipal implements ActionListener {
 
